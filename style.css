@@ -219,4 +219,25 @@ footer .copyright {
                 0 0 15px rgba(255,255,255,0.1);
     filter: brightness(1.05) drop-shadow(0 0 10px rgba(255,255,255,0.15));
 }
+/* FRECCE LIGHTBOX */
+#lightbox-overlay div {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
 
+#lightbox-overlay div:hover {
+    opacity: 1 !important;
+    transform: translateY(-50%) scale(1.15);
+}
+/* CONTATORE LIGHTBOX */
+#lightbox-overlay div {
+    letter-spacing: 1px;
+}
+/* PULSANTE CHIUSURA LIGHTBOX */
+#lightbox-overlay div {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+#lightbox-overlay div:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}
