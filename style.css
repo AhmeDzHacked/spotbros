@@ -207,3 +207,16 @@ footer .copyright {
 @media (max-width: 480px) {
     .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
 }
+/* --- EFFETTO 3D DINAMICO SUL LIGHTBOX --- */
+#lightbox-overlay img {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    filter: brightness(1) drop-shadow(0 0 5px rgba(255,255,255,0.1));
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+#lightbox-overlay:hover img {
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7),
+                0 0 15px rgba(255,255,255,0.1);
+    filter: brightness(1.05) drop-shadow(0 0 10px rgba(255,255,255,0.15));
+}
+
