@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Spotbros</title>
+    <meta name="description" content="Esplora la nostra collezione completa di fotografie automotive, street e lifestyle.">
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="portfolio-page">
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">SPOTBROS</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#about">About</a>
+                <a href="index.html#contact">Contatti</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Portfolio Header -->
+    <section class="portfolio-header">
+        <div class="portfolio-hero">
+            <div class="hero-grain"></div>
+            <h1 class="portfolio-title">
+                <span class="title-small">Il Nostro</span>
+                <span class="title-large">PORTFOLIO</span>
+            </h1>
+            <p class="portfolio-subtitle">Automotive • Street • Lifestyle</p>
+        </div>
+    </section>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar">
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Tutte</button>
+            <button class="filter-btn" data-filter="automotive">Automotive</button>
+            <button class="filter-btn" data-filter="street">Street</button>
+            <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+        </div>
+    </div>
+
+    <!-- Portfolio Grid -->
+    <section class="portfolio-gallery">
+        <div class="masonry-grid">
+            <div class="gallery-card" data-category="automotive">
+                <img src="images/foto1.jpg" alt="Automotive Photography 1" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Automotive</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="street">
+                <img src="images/foto2.jpg" alt="Street Photography 2" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Street</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="lifestyle">
+                <img src="images/foto3.jpg" alt="Lifestyle Photography 3" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Lifestyle</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="automotive">
+                <img src="images/foto4.jpg" alt="Automotive Photography 4" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Automotive</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="street">
+                <img src="images/foto5.jpg" alt="Street Photography 5" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Street</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="automotive">
+                <img src="images/foto6.jpg" alt="Automotive Photography 6" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Automotive</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="lifestyle">
+                <img src="images/foto7.jpg" alt="Lifestyle Photography 7" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Lifestyle</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="street">
+                <img src="images/foto8.jpg" alt="Street Photography 8" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Street</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="automotive">
+                <img src="images/foto9.jpg" alt="Automotive Photography 9" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Automotive</span>
+                </div>
+            </div>
+            
+            <div class="gallery-card" data-category="lifestyle">
+                <img src="images/foto10.jpg" alt="Lifestyle Photography 10" loading="lazy">
+                <div class="card-info">
+                    <span class="card-category">Lifestyle</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top -->
+    <div class="back-to-top" id="backToTop">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 19V5M12 5L5 12M12 5L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+
+    <!-- Footer -->
+    <footer class="portfolio-footer">
+        <div class="footer-content">
+            <p class="footer-text">Vuoi vedere altri lavori?</p>
+            <a href="https://www.instagram.com/Spotbrosz/" target="_blank" class="footer-link">Seguici su Instagram →</a>
+        </div>
+    </footer>
+
+    <script src="animations.js"></script>
+</body>
+</html>
