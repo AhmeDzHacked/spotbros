@@ -1417,3 +1417,37 @@ a {
         padding: 1.5rem 1rem;
     }
 }
+/* Fix per label select sovrapposta */
+.form-group select:valid:not([value=""]) + .select-label,
+.form-group select.has-value + .select-label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    background: var(--color-bg);
+}
+
+/* Nascondi label placeholder quando select è aperta o ha valore */
+.form-group select option[value=""] {
+    color: var(--color-text-muted);
+}
+
+/* Assicurati che il testo selezionato sia visibile */
+.form-group select {
+    color: var(--color-text);
+    padding-top: 1.2rem;
+    padding-bottom: 0.8rem;
+}
+
+/* Stato attivo della select - label sempre sopra */
+.form-group select:focus {
+    color: var(--color-text);
+}
+
+.form-group select:focus + .select-label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    background: var(--color-bg);
+}
