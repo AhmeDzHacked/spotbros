@@ -21,6 +21,43 @@ document.querySelectorAll('[data-aos]').forEach(el => {
 
 
 // ============================================
+// COUNTER ANIMATION
+// ============================================
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    const duration = 2000; // 2 seconds
+    const step = target / (duration / 16); // 60fps
+    let current = 0;
+    
+    const timer = setInterval(() => {
+        current += step;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
+        }
+    }, 16);
+}
+
+// Trigger counter animation when hero is visible
+const heroStats = document.querySelector('.hero-stats');
+if (heroStats) {
+    const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counters = entry.target.querySelectorAll('.stat-number[data-target]');
+                counters.forEach(counter => animateCounter(counter));
+                statsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    statsObserver.observe(heroStats);
+}
+
+
+// ============================================
 // LIGHTBOX FUNCTIONALITY
 // ============================================
 let currentImageIndex = 0;
@@ -30,6 +67,7 @@ function initializeLightbox() {
     galleryImages = Array.from(document.querySelectorAll('.gallery-item img, .gallery-card img'));
     
     galleryImages.forEach((img, index) => {
+        img.style.cursor = 'pointer';
         img.addEventListener('click', () => openLightbox(index));
     });
 }
@@ -288,36 +326,27 @@ function initializeParallax() {
 
 
 // ============================================
-// CURSOR TRAIL EFFECT (OPTIONAL)
+// FORM HANDLING
 // ============================================
-function initializeCursorEffect() {
-    // Only on desktop
-    if (window.innerWidth < 768) return;
+function initializeForm() {
+    const form = document.querySelector('.contact-form');
+    if (!form) return;
     
-    const cursor = document.createElement('div');
-    cursor.className = 'custom-cursor';
-    cursor.style.cssText = `
-        position: fixed;
-        width: 10px;
-        height: 10px;
-        background: var(--color-accent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 10000;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        mix-blend-mode: difference;
-    `;
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursor.style.opacity = '0.8';
-    });
-    
-    document.addEventListener('mouseleave', () => {
-        cursor.style.opacity = '0';
+    form.addEventListener('submit', function(e) {
+        const submitBtn = form.querySelector('.submit-btn');
+        const originalText = submitBtn.innerHTML;
+        
+        submitBtn.innerHTML = '<span>Invio in corso...</span>';
+        submitBtn.disabled = true;
+        
+        // Formspree gestisce il resto, questo è solo per UX
+        setTimeout(() => {
+            submitBtn.innerHTML = '<span>Inviato! ✅</span>';
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 2000);
+        }, 1000);
     });
 }
 
@@ -333,7 +362,6 @@ function initializeLazyLoading() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    img.src = img.src;
                     img.classList.add('loaded');
                     observer.unobserve(img);
                 }
@@ -356,9 +384,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeNavbarScroll();
     initializeParallax();
     initializeLazyLoading();
-    
-    // Optional: uncomment to enable cursor effect
-    // initializeCursorEffect();
+    initializeForm();
     
     // Add page loaded class for animations
     setTimeout(() => {
