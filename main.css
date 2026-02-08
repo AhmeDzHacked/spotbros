@@ -253,8 +253,48 @@ a {
     font-family: var(--font-body);
     font-size: clamp(1rem, 2vw, 1.3rem);
     color: var(--color-text-muted);
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-weight: 400;
+}
+
+/* HERO STATS */
+.hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    min-width: 150px;
+    transition: var(--transition-smooth);
+}
+
+.stat-box:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-5px);
+    background: rgba(255, 77, 0, 0.1);
+}
+
+.stat-box .stat-number {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    color: var(--color-accent);
+    display: block;
+    line-height: 1;
+}
+
+.stat-box .stat-label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+    margin-top: 0.5rem;
 }
 
 .hero-cta {
@@ -562,7 +602,7 @@ a {
     transform: translateY(-5px);
 }
 
-.stat-number {
+.stat-item .stat-number {
     font-family: var(--font-display);
     font-size: 3rem;
     color: var(--color-accent);
@@ -591,7 +631,7 @@ a {
 
 
 /* ============================================
-   CONTACT SECTION
+   CONTACT SECTION & FORM
    ============================================ */
 .contact-section {
     padding: var(--spacing-xl) var(--spacing-md);
@@ -600,7 +640,7 @@ a {
 }
 
 .contact-container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -618,24 +658,170 @@ a {
     line-height: 1.8;
 }
 
-.contact-email {
-    display: inline-block;
-    font-size: 1.8rem;
+/* Contact Form Styles */
+.contact-form {
+    max-width: 700px;
+    margin: 3rem auto;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    padding: 3rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem 1.2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: var(--transition-smooth);
+    border-radius: 0;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    background: rgba(255, 77, 0, 0.05);
+}
+
+.form-group label {
+    position: absolute;
+    left: 1.2rem;
+    top: 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: transparent;
+    padding: 0 0.3rem;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:focus + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    background: var(--color-bg);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ff4d00' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+.form-group select:focus + .select-label,
+.form-group select:valid + .select-label {
+    top: -0.6rem;
+    left: 0.8rem;
+    font-size: 0.8rem;
+    color: var(--color-accent);
+    background: var(--color-bg);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: var(--color-accent);
+    color: white;
+    border: none;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: var(--transition-smooth);
+    margin-top: 1rem;
+}
+
+.submit-btn:hover {
+    background: var(--color-accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 77, 0, 0.4);
+}
+
+.submit-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.submit-btn:hover svg {
+    transform: translateX(5px);
+}
+
+.form-note {
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+}
+
+.form-note a {
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.contact-alternative {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-alternative p {
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+}
+
+.phone-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--color-accent);
-    margin-bottom: 3rem;
     transition: var(--transition-smooth);
 }
 
-.contact-email:hover {
+.phone-link:hover {
     letter-spacing: 2px;
-    transform: translateY(-2px);
+    transform: scale(1.05);
 }
 
 .social-links {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-top: 3rem;
     margin-bottom: 4rem;
 }
 
@@ -659,11 +845,71 @@ a {
 .footer-bottom {
     padding-top: 3rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .copyright {
     font-size: 0.9rem;
     color: var(--color-text-muted);
+}
+
+
+/* ============================================
+   WHATSAPP FLOAT BUTTON
+   ============================================ */
+.whatsapp-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #25D366;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    animation: whatsappPulse 2s infinite;
+}
+
+.whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+}
+
+.whatsapp-text {
+    position: absolute;
+    right: 70px;
+    background: #25D366;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    pointer-events: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+.whatsapp-float:hover .whatsapp-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes whatsappPulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4); }
+    50% { box-shadow: 0 4px 30px rgba(37, 211, 102, 0.7); }
 }
 
 
@@ -883,6 +1129,10 @@ a {
     letter-spacing: 2px;
 }
 
+.footer-contact {
+    margin-top: 2rem;
+}
+
 
 /* ============================================
    LIGHTBOX
@@ -1014,6 +1264,19 @@ a {
     .featured-grid {
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
+    
+    .hero-stats {
+        gap: 1.5rem;
+    }
+    
+    .stat-box {
+        min-width: 120px;
+        padding: 1rem;
+    }
+    
+    .stat-box .stat-number {
+        font-size: 2.5rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1031,6 +1294,17 @@ a {
     
     .hero-section {
         padding: 1rem;
+    }
+    
+    .hero-stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .stat-box {
+        width: 100%;
+        max-width: 200px;
     }
     
     .hero-cta {
@@ -1061,6 +1335,15 @@ a {
         gap: 1rem;
     }
     
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    
     .masonry-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 1rem;
@@ -1084,6 +1367,22 @@ a {
     
     .lightbox-next {
         right: 1rem;
+    }
+    
+    .whatsapp-float {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 55px;
+        height: 55px;
+    }
+    
+    .whatsapp-text {
+        display: none;
+    }
+    
+    .back-to-top {
+        bottom: 5rem;
+        right: 1.5rem;
     }
 }
 
@@ -1112,5 +1411,9 @@ a {
     .filter-btn {
         padding: 0.6rem 1.5rem;
         font-size: 0.85rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem 1rem;
     }
 }
